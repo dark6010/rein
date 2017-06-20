@@ -1,0 +1,52 @@
+extends layout
+
+block content
+  h2 Programa de Observaciones al Azar
+  form(method='POST' action='/periodos')
+    .row
+      .col-xs-12.col-md-4
+          fieldset.well
+            legend.well-legend horas formato 24hrs.
+            row
+              .col-md-12.col-xs-12
+                h4 hora inicio jornada
+              .col-md-6.col-xs-6
+                label(for='hi') hora:
+                input#hi.form-control(type='number', placeholder='0-23', name='hi', min="0", max="23", size="2", required)
+              .col-md-6.col-xs-6
+                label(for='mi') minuto:
+                input#mi.form-control(type='number', placeholder='0-59', name='mi', min="0", max="59", size="2", required)
+              .col-md-12.col-xs-12
+                br
+                br
+                h4 hora fin jornada
+              .col-md-6.col-xs-6
+                label(for='hf') hora:
+                input#hf.form-control(type='number', placeholder='0-23', name='hf', min="0", max="23", size="2", required)
+              .col-md-6.col-xs-6
+                label(for='mf') minuto:
+                input#mf.form-control(type='number', placeholder='0-59', name='mf', min="0", max="59", size="2", required)
+      .col-xs-12.col-md-4
+          fieldset.well
+            legend.well-legend observaciones
+            h4 numero de periodos en los que no se realizan observaciones
+            label(for='np') numero:
+            input#np.form-control(type='number', placeholder='ej. 2', name='np', size="2", required)
+            br
+            h4 numero de observaciones requeridas por dia
+            label(for='no') numero:
+            input#no.form-control(type='number', placeholder='ej. 10', name='no', size="2", required)
+      .col-xs-12.col-md-4
+          fieldset.well
+            legend.well-legend datos
+            h4 nombre del analista completo
+            label(for='na') nombre:
+            input#na.form-control(type='text', placeholder='ej. Juan Perez', name='na', size="20", required)
+            br
+            h4 puesto, etapa del analista
+            label(for='pa') puesto:
+            input#pa.form-control(type='text', placeholder='ej. torno automatico', name='pa', size="20", required)
+            br
+      .col-xs-12.col-md-12
+          
+          button.btn.btn-primary(type='submit') enviar

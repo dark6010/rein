@@ -1,0 +1,42 @@
+extends layout
+block content
+  - var n=0;
+  h2 Programa de Observaciones al Azar
+  h3 Periodos en los que no se realizan observaciones de #{hi}:#{mi} a #{hf}:#{mf} hrs.
+  form(method='POST' action='/plantilla')
+    .row
+      while n < np
+        .col-xs-12.col-md-4
+            fieldset.well
+              legend.well-legend horas formato 24hrs.
+              h3 Periodo #{n+1}
+              row
+                .col-md-12.col-xs-12
+                  h4 hora inicio periodo
+                .col-md-6.col-xs-6
+                  label(for='hi'+n) hora:
+                  input.form-control(type='number', placeholder='0-23', name="hip"+'['+n+']', min="0", max="23", size="2", id="hi"+n, required)
+                .col-md-6.col-xs-6
+                  label(for='mi'+n) minuto:
+                  input.form-control(type='number', placeholder='0-59', name='mip'+'['+n+']', min="0", max="59", size="2", id="mi"+n, required)
+                .col-md-12.col-xs-12
+                  br
+                  h4 hora fin periodo
+                .col-md-6.col-xs-6
+                  label(for='hf'+n) hora:
+                  input.form-control(type='number', placeholder='0-23', name='hfp'+'['+n+']', min="0", max="23", size="2", id="hf"+n, required)
+                .col-md-6.col-xs-6
+                  label(for='mf'+n) minuto:
+                  input.form-control(type='number', placeholder='0-59', name='mfp'+'['+n+']', min="0", max="59", size="2", id="mf"+n, required)
+                -n++
+     
+      .col-xs-12.col-md-12
+          input(type="hidden" name="hi" value=""+hi )
+          input(type="hidden" name="mi" value=""+mi )
+          input(type="hidden" name="hf" value=""+hf )
+          input(type="hidden" name="mf" value=""+mf )
+          input(type="hidden" name="np" value=""+np )
+          input(type="hidden" name="no" value=""+no )
+          input(type="hidden" name="na" value=""+na )
+          input(type="hidden" name="pa" value=""+pa )
+          button.btn.btn-primary(type='submit') enviar
